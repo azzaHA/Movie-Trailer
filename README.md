@@ -16,7 +16,7 @@ For Windows users:
 1. Open command line
 2. Change the current directory to the package folder
 ```
-cd \yourpath\movie_trailer
+cd \yourpath\Movie_Trailer-master
 ```
 3. run 'python' command
 ```
@@ -31,7 +31,7 @@ For Mac users:
 1. Open the terminal
 2. Change the current directory to the package folder
 ```
-cd '/yourpath/movie_trailer'
+cd '/yourpath/Movie_Trailer-master'
 ```
 3. run 'python' command
 ```
