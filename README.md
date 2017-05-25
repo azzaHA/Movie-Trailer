@@ -1,48 +1,25 @@
 # Movie Trailer Website
-The program displays a group of movies where you can watch their trailers on the loaded webpage.
+The webpage displays the trailers of new movies in theatres.
 
-![Screen shot of the loaded webpage](Movie-Trailer/movie-trailer-screen-shot.png)
+![Screen shot of the loaded webpage on May 25th, 2017](./movie-trailer-screen-shot.png)
 
 # Prerequisites
-Python need to be installed. Install from [here](https://www.python.org/downloads/).
+1. [Python 2.7](https://www.python.org/download/releases/2.7/)
+2. [Flask 0.12](http://flask.pocoo.org/docs/0.12/installation/)
+3. [tmdbsimple 1.6.1](https://pypi.python.org/pypi/tmdbsimple)
 
-The program is done using Python 2.7
+# Installation & Run
+1. Download/Clone the zip file, extract it.
+2. Open the command-line shell, and navigate to the project directory.
+3. Run
+```
+python entertainment_center.py
+```
+4. Open your browser and visit the displayed address from running the previous command as shown below.
+![Address screenshot](./webpage-address-screenshot.png)
 
-# Installation
-Clone or download the package to your local machine.
-
-# Usage Example
-For Windows users:
-1. Open command line
-2. Change the current directory to the package folder
-```
-cd \yourpath\Movie_Trailer-master
-```
-3. run 'python' command
-```
-python
-```
-4. import entertainment_center module
-```
-import entertainment_center
-```
-
-For Mac users:
-1. Open the terminal
-2. Change the current directory to the package folder
-```
-cd '/yourpath/Movie_Trailer-master'
-```
-3. run 'python' command
-```
-python
-```
-4. import entertainment_center module
-```
-import entertainment_center
-```
-
-# Development setup
-// ask, [link](https://dbader.org/blog/write-a-great-readme-for-your-github-project)
-# Meta
-Azza Hassan Ahmad - [azza.h.mostafa@gmail.com](azza.h.mostafa@gmail.com).
+# Technical Details
+- Movies are fetched using tmdbsimple API to get current movies in theatres
+- The project follows the MVC pattern using Flask and AngularJS.
+    1. Flask hosts REST APIs to retrieve the movies from "The Movies Database".
+    2. AngularJS communicates with Flask server to get the movies retrieved from (1) and binds them with the view.
