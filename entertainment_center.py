@@ -1,41 +1,38 @@
 """
-Generate Movie objects and store them in memory,
-then pass them to fresh_tomatoes module to load
-them on a webpage
+* Flask main module
+* Responsible for
+    - Starting the web server
+    - Providing APIs for retrieving movies
+    - Rendering views
 """
-from media import Movie
-import fresh_tomatoes
+import ConfigParser
+from flask import Flask
+from flask import jsonify
+from flask import render_template
+from MovieRepo import MoviesRepository
 
-# Create movie objects
-toy_story = Movie(
-    "Toy Story",
-    "A story of a boy and his toys that come to life",
-    "https://www.youtube.com/watch?v=KYz2wyBy3kc",
-    "https://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg")
+app = Flask(__name__, static_url_path='/static')
+TMDB_API_KEY = ""
 
-inside_out = Movie("Inside Out", "Going inside the brain of a young girl",
-                   "https://www.youtube.com/watch?v=_MC3XuMvsDI",
-                   "http://fontmeme.com/images/inside-out-poster.jpg")
 
-paddington = Movie("Paddington", "A bear finding home in London",
-                   "https://www.youtube.com/watch?v=qFuzMlfZGWM",
-                   "https://goo.gl/CGddLy")
+@app.route('/')
+def index():
+    """Render html file (the view)"""
+    return render_template('tomatoes.html')
 
-hidden_figures = Movie("Hidden Figures", "Three women contributing to NASA",
-                       "https://www.youtube.com/watch?v=RK8xHq6dfAo",
-                       "https://goo.gl/wPurcn")
 
-zootopia = Movie("Zootopia", "A rabbit police officer in Zootopia",
-                 "https://www.youtube.com/watch?v=jWM0ct-OLsM",
-                 "https://goo.gl/FsK4HE")
+@app.route('/nowplaying')
+def now_playing():
+    """Return serialized list of Movie objects"""
+    movie_repo = MoviesRepository(TMDB_API_KEY)
+    return jsonify([e.serialize() for e in movie_repo.now_playing()])
 
-moana = Movie("Moana", "A girl from Mawi returning the heart of Tahiti",
-              "https://www.youtube.com/watch?v=LKFuXETZUsI",
-              "https://goo.gl/tKPBYI")
-
-# store movie objects in memory
-movies = [toy_story, inside_out, paddington, hidden_figures, zootopia, moana]
-
-# pass the movie objects to fresh_tomatoes module to display them
-# on fresh_tomatoes.html webpage
-fresh_tomatoes.open_movies_page(movies)
+if __name__ == "__main__":
+    """Main entry point"""
+    configParser = ConfigParser.RawConfigParser()
+    configParser.read(r'config.txt')
+    TMDB_API_KEY = configParser.get('TMDB-settings', 'API_KEY')
+    if (TMDB_API_KEY == ""):
+        print ("Empty API_KEY, please add your API_KEY in config.txt file")
+    else:
+        app.run()

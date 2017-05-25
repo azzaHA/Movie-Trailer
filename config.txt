@@ -1,0 +1,2 @@
+[TMDB-settings]
+API_KEY=
