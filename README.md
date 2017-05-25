@@ -12,13 +12,13 @@ The webpage displays the trailers of new movies in theatres.
 # Installation & Run
 1. Download/Clone the zip file, extract it.
 2. Open the command-line shell, and navigate to the project directory.
-3. Edit config.txt file to add your obtained API key, without leading spaces or surrounding quotes
+3. Edit config.txt file to add your obtained API key, without leading spaces or surrounding quotes.
     - API_KEY=\<your-api-key\>
-4. Run
+4. Run:
 ```
 python entertainment_center.py
 ```
-4. Open your browser and visit the displayed address from running the previous command as shown below.
+5. Open your browser and visit the displayed address from running the previous command as shown below.
 ![Address screenshot](./webpage-address-screenshot.png)
 
 # Technical Details
