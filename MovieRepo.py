@@ -8,9 +8,7 @@ from media import Movie
 
 class MoviesRepository():
     """
-    Attributes:
-    __trailers_args:
-
+    Methods:
     __init__: instantiates new MoviesRepository object
     now_playing: returns a list of Movie objects,
                  representing current movies in theatres
@@ -18,7 +16,6 @@ class MoviesRepository():
 
     def __init__(self, api_key):
         tmdb.API_KEY = api_key
-        self.__trailers_args = {'append_to_response': 'trailers'}
 
     def now_playing(self):
         """return a list of Movie objects,
@@ -37,7 +34,7 @@ class MoviesRepository():
             story = r['overview']
             image = 'https://image.tmdb.org/t/p/w342/' + r['poster_path']
 
-            # use movie_id to get the movie trailer
+            # use movie_id to get the movie trailers
             # using videos() method,
             # and store the 'results' list
             trailers = tmdb.Movies(movie_id).videos()['results']
