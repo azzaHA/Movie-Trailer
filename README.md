@@ -1,7 +1,7 @@
 # Movie Trailer Website
 The program displays a group of movies where you can watch their trailers on the loaded webpage.
 
-![Screen shot of the loaded webpage](Movie-Trailer/Screen Shot 2017-05-19 at 5.42.34 PM.png)
+![Screen shot of the loaded webpage](Movie-Trailer/movie-trailer-screen-shot.png)
 
 # Prerequisites
 Python need to be installed. Install from [here](https://www.python.org/downloads/).
